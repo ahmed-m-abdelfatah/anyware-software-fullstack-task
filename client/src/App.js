@@ -1,7 +1,5 @@
-import Count from './Count.js';
-
 const App = () => {
-  return <Count />;
+  return <>hello</>;
 };
 
 export default App;

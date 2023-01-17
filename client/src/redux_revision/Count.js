@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { countChange } from './redux/actionGenerators/countGenerators.js';
+import { countChange } from '../redux/actionGenerators/countGenerators.js';
 
 const Count = props => {
   console.log('props', props);
