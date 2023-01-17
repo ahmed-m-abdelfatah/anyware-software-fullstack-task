@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.sidebar {
+  width: 16rem;
+  box-shadow: $box-shadow;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  ul {
+    li {
+      a {
+      }
+    }
+  }
+}
+
+//  [ ] use svg or font awesome
