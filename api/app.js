@@ -16,15 +16,14 @@ appRoutes(app);
 const localDB = process.env.DB_LOCAL_URI;
 const globalDB = process.env.DB_GLOBAL_URI;
 
-// connectDB(localDB);
-connectDB(globalDB);
+connectDB(localDB);
+// connectDB(globalDB);
 
 const server = app.listen(port, () => {
   console.log('running......', port);
 
   /**
-   // start swagger docs
-   // NOTE
+   * SWAGGER DOCS NOTES
    * 1. don't make 2 end points end with the same name [add product = /add and add comment = /add] because the stupid converter will render the second one it should be [add product = product/add and add comment = comment/add]
    */
   require('./swagger/postman_to_swagger.js');
