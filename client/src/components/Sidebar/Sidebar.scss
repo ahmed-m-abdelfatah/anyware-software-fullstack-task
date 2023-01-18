@@ -3,27 +3,51 @@
 .sidebar {
   width: 16rem;
   box-shadow: $box-shadow;
+  padding: 1.25rem 0 1.25rem;
+  background: rgb(12, 186, 186);
+  background: linear-gradient(180deg, rgba(12, 186, 186, 1) 0%, rgba(56, 0, 54, 1) 100%);
+  transition: 0.3s;
+
+  @include smMax {
+    width: 0;
+  }
 
   h3 {
     margin-top: 0;
-  }
-
-  p {
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 20px;
-      height: 20px;
-    }
+    margin-bottom: 1.5625rem;
+    color: map-get($map: $colors, $key: white);
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 1.5625rem;
   }
 
   ul {
+    margin: 0;
+
     li {
       a {
+        transition: 0.3s;
+        margin-bottom: 0.3125rem;
+        display: flex;
+        align-items: center;
+        font-size: 0.9375rem;
+        color: map-get($map: $colors, $key: white);
+        padding: 1.25rem 0;
+        padding-#{$left}: 1.25rem;
+
+        &:hover,
+        &.active {
+          background-color: map-get($map: $colors, $key: white);
+          color: map-get($map: $colors, $key: black);
+          border-#{$left}: 5px solid map-get($map: $colors, $key: black);
+        }
+
+        span {
+          font-size: 1.125rem;
+          margin-#{$left}: 0.9375rem;
+          text-transform: capitalize;
+        }
       }
     }
   }
 }
-
-//  [ ] use svg or font awesome
