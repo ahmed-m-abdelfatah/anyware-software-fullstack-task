@@ -4,21 +4,26 @@
   width: 16rem;
   box-shadow: $box-shadow;
   padding: 1.25rem 0 1.25rem;
-  background: rgb(12, 186, 186);
-  background: linear-gradient(180deg, rgba(12, 186, 186, 1) 0%, rgba(56, 0, 54, 1) 100%);
+  background: map-get($map: $colors, $key: main);
+  background: linear-gradient(
+    180deg,
+    map-get($map: $colors, $key: main) 0%,
+    map-get($map: $colors, $key: main-alt) 100%
+  );
   transition: 0.3s;
+  overflow: hidden;
 
   @include smMax {
     width: 0;
   }
 
   h3 {
-    margin-top: 0;
-    margin-bottom: 1.5625rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
     color: map-get($map: $colors, $key: white);
     text-align: center;
     text-transform: capitalize;
-    font-size: 1.5625rem;
+    font-size: 30px;
   }
 
   ul {
@@ -27,7 +32,6 @@
     li {
       a {
         transition: 0.3s;
-        margin-bottom: 0.3125rem;
         display: flex;
         align-items: center;
         font-size: 0.9375rem;

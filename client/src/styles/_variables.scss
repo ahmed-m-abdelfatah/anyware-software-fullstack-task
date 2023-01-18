@@ -6,18 +6,32 @@ $box-shadow: 0 0 20px #ddd;
 // colors
 $colors: (
   bg: #f1f5f9,
-  main: #0075ff,
-  blue-alt: #0d69d5,
+  main: #0cbaba,
+  main-alt: #380036,
   white: white,
   black: black,
 );
 
 // screens
 $breakpoints: (
+  exm: 374px,
   sm: 767px,
   md: 991px,
   lg: 1100px,
 );
+
+// extraSmallScreen
+@mixin exmMin {
+  @media (min-width: map-get($breakpoints,exm)) {
+    @content;
+  }
+}
+
+@mixin exmMax {
+  @media (max-width: map-get($breakpoints,exm)) {
+    @content;
+  }
+}
 
 // mobileScreen
 @mixin smMin {
