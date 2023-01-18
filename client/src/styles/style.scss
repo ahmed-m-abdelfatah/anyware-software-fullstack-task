@@ -17,10 +17,10 @@
   }
 
   &-thumb {
-    background-color: map-get($map: $colors, $key: blue);
+    background-color: map-get($map: $colors, $key: main);
 
     &:hover {
-      background-color: map-get($map: $colors, $key: blue-alt);
+      background-color: map-get($map: $colors, $key: main-alt);
     }
   }
 }
