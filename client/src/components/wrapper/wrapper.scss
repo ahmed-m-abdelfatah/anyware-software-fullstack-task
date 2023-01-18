@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  padding: 1.25rem;
+
+  & > * {
+    background-color: map-get($map: $colors, $key: white);
+    padding: 1.25rem;
+    border-radius: 0.3125rem;
+  }
+
+  .intro {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    & > * {
+      max-width: 50%;
+      padding: 10px;
+
+      @include smMax {
+        max-width: 100%;
+      }
+    }
+
+    .text {
+      h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: map-get($map: $colors, $key: main);
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      span {
+        color: map-get($map: $colors, $key: 888);
+      }
+    }
+
+    .img {
+      img {
+        width: 80%;
+      }
+    }
+  }
+  .div2 {
+  }
+  .div3 {
+  }
+}

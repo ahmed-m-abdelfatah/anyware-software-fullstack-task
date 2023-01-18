@@ -1,5 +1,5 @@
 import './Navbar.scss';
-import avatar from '../../img/avatar.png';
+import avatar from '../../img/undraw_pic_profile_re_7g2h.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 

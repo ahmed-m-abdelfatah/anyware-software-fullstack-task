@@ -1,7 +1,8 @@
 @use '../../styles/variables' as *;
 
 .sidebar {
-  width: 16rem;
+  width: 30%;
+  min-width: 16rem;
   box-shadow: $box-shadow;
   padding: 1.25rem 0 1.25rem;
   background: map-get($map: $colors, $key: main);
@@ -15,6 +16,7 @@
 
   @include smMax {
     width: 0;
+    min-width: 0;
   }
 
   h3 {
