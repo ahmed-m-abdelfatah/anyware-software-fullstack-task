@@ -2,27 +2,35 @@
 
 .nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   background-color: map-get($map: $colors, $key: white);
-  padding: 0.625rem;
-  width: 100%;
+  padding: 0.625rem 1.25rem;
 
   @include smMax {
     flex-direction: column;
+    align-items: center;
   }
 
   .row {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     margin-top: 0.625rem;
-  }
 
-  .row {
-    .icon {
+    &:last-of-type {
+      margin-#{$left}: auto;
+
+      @include smMax {
+        margin-#{$left}: 0;
+        justify-content: center;
+
+        & > * {
+          margin-bottom: 0.625rem;
+        }
+      }
+    }
+
+    .sidebar-controller-icon {
       background-color: transparent;
       border: 0;
       cursor: pointer;
@@ -32,21 +40,15 @@
       text-transform: capitalize;
       margin-#{$left}: 1.25rem;
     }
-  }
 
-  .row {
     .search {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       position: relative;
 
-      @include exmMax {
-        margin-bottom: 1.25rem;
-      }
-
       .search-icon {
         position: absolute;
-        left: 0.625rem;
+        #{$left}: 0.625rem;
       }
 
       input {
@@ -63,19 +65,27 @@
     }
 
     .icons {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.625rem;
-      color: rgb(12, 186, 186);
+      color: map-get($map: $colors, $key: main);
 
       > * {
+        width: 2.5rem;
+        height: 2.5rem;
         cursor: pointer;
         display: inline-block;
+
+        &:not(:last-child) {
+          margin-#{$right}: 0.625rem;
+        }
+
+        &:last-child {
+          margin-#{$left}: 0.625rem;
+          margin-#{$right}: 0;
+        }
       }
 
       .icon {
-        width: 2.5rem;
         padding: 0.625rem;
         position: relative;
 
@@ -97,7 +107,6 @@
       }
 
       img {
-        width: 2.5rem;
         border-radius: 50%;
         background-color: map-get($map: $colors, $key: 888);
       }

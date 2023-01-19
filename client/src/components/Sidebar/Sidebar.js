@@ -1,4 +1,6 @@
 import './Sidebar.scss';
+import { connect } from 'react-redux';
+import { sidebarToggler } from '../../redux/actionGenerators/sidebarGenerators.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHouseChimney,
@@ -9,9 +11,12 @@ import {
   faBullhorn,
 } from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = () => {
+export const Sidebar = props => {
   return (
-    <aside className='sidebar'>
+    <aside className={props.active === true ? 'sidebar active' : 'sidebar'}>
+      <div className='close'>
+        <button onClick={() => props.toggleSidebar()}>close x</button>
+      </div>
       <h3>Coligo</h3>
       <ul>
         <li>
@@ -60,4 +65,14 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+const mapStateToProps = state => ({
+  active: state.sidebarReducer.active,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleSidebar: () => dispatch(sidebarToggler()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

@@ -15,24 +15,10 @@ $colors: (
 
 // screens
 $breakpoints: (
-  exm: 374px,
   sm: 767px,
   md: 991px,
   lg: 1100px,
 );
-
-// extraSmallScreen
-@mixin exmMin {
-  @media (min-width: map-get($breakpoints,exm)) {
-    @content;
-  }
-}
-
-@mixin exmMax {
-  @media (max-width: map-get($breakpoints,exm)) {
-    @content;
-  }
-}
 
 // mobileScreen
 @mixin smMin {

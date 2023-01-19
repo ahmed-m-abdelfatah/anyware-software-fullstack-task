@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+
+.main {
+  min-height: 100vh;
+  display: flex;
+
+  .content {
+    flex-grow: 1;
+    font-size: 1.2rem;
+  }
+
+  .wrapper {
+    padding: 1.25rem;
+  }
+}
