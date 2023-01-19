@@ -11,5 +11,13 @@
 
   .wrapper {
     padding: 1.25rem;
+
+    .cards {
+      display: flex;
+      grid-template: 1.25rem;
+
+      & > *:nth-child(even) {
+      }
+    }
   }
 }

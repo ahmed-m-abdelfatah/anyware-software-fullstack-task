@@ -17,6 +17,11 @@
     flex-wrap: wrap;
     margin-top: 0.625rem;
 
+    @include smMax {
+      display: block;
+      text-align: center;
+    }
+
     &:last-of-type {
       margin-#{$left}: auto;
 
