@@ -11,7 +11,7 @@
     map-get($map: $colors, $key: main) 0%,
     map-get($map: $colors, $key: main-alt) 100%
   );
-  transition: 0.3s;
+  transition: $transition;
   overflow: hidden;
 
   &.active {
@@ -60,7 +60,7 @@
 
     li {
       a {
-        transition: 0.3s;
+        transition: $transition;
         display: flex;
         align-items: center;
         font-size: 0.9375rem;

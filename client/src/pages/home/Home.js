@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar/Navbar.js';
 import Intro from '../../components/intro/Intro.js';
 import Card from '../../components/card/Card.js';
 import Announcement from '../../components/announcement/Announcement.js';
-import Quiz from '../../components/quiz/Quiz.js';
+import Due from '../../components/due/Due.js';
 
 const Home = () => {
   return (
@@ -20,7 +20,12 @@ const Home = () => {
               <Announcement />
             </Card>
             <Card title='What is due' description='Lorem ipsum dolor sit amet elit. Dolorem.'>
-              <Quiz />
+              <Due type='quiz' title='unit 2 quiz' list={{ course: 'physics02', topic: 'lorem', dueDate: 'lorem' }} />
+              <Due
+                type='assignment'
+                title='12 - 12 Assignment'
+                list={{ course: 'arabic k12', topic: 'الوحدة الثانية', dueDate: 'lorem' }}
+              />
             </Card>
           </div>
         </div>

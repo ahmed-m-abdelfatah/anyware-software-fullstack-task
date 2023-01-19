@@ -14,9 +14,23 @@
 
     .cards {
       display: flex;
-      grid-template: 1.25rem;
+      gap: 1.25rem;
+      justify-content: space-between;
+
+      @include smMax {
+        flex-direction: column;
+
+        & > * {
+          width: 100% !important;
+        }
+      }
 
       & > *:nth-child(even) {
+        width: 30%;
+      }
+
+      & > *:nth-child(odd) {
+        width: calc(70% - 1.25rem);
       }
     }
   }

@@ -13,12 +13,13 @@
     .card__header__text {
       h3 {
         margin-top: 0;
-        margin-bottom: 0.625rem;
+        margin-bottom: 0;
       }
 
       p {
         font-size: 0.8rem;
         color: map-get($map: $colors, $key: 888);
+        margin-top: 0;
       }
     }
 
