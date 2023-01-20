@@ -15,10 +15,12 @@
   .col {
     @include smMax {
       width: 100% !important;
+      max-width: none !important;
     }
 
     &:first-of-type {
       width: 30%;
+      max-width: 15rem;
     }
 
     &:last-of-type {
