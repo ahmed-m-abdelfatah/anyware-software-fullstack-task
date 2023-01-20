@@ -84,6 +84,7 @@ export const softDeleteAnnouncementById = async (req, res) => {
     await announcementModel.findByIdAndUpdate(
       id,
       {
+        deletedBy: req.user._id,
         isDeleted: true,
       },
       { new: true },

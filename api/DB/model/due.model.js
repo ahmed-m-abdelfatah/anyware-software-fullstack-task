@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-const quizSchema = new mongoose.Schema(
+const dueSchema = new mongoose.Schema(
   {
-    quizName: { type: String, required: true },
-    courseName: { type: mongoose.Schema.Types.courseName, ref: 'Course', required: true },
-    quizTopic: { type: String, required: true },
+    dueName: { type: String, required: true },
+    courseName: { type: String, required: true },
+    dueTopic: { type: String, required: true },
     dueDate: { type: Date, required: true },
     instructor: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     isDeleted: { type: Boolean, default: false },
@@ -14,6 +14,5 @@ const quizSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const quizModel = mongoose.model('Quiz', quizSchema);
-
-export default quizModel;
+const dueModel = mongoose.model('Due', dueSchema);
+export default dueModel;
