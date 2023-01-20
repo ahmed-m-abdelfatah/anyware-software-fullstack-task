@@ -36,5 +36,6 @@ export const dueKeyPattern = {
   dueName: joi.string(),
   courseName: joi.string(),
   dueTopic: joi.string(),
-  dueDate: joi.date(),
+  dueDate: joi.string(),
+  // dueDate: joi.date(),
 };

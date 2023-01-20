@@ -11,7 +11,8 @@ components:
       scheme: bearer
 tags:
   - name: auth
-  - name: Announcement
+  - name: announcement
+  - name: due
 paths:
   /auth/signup:
     post:
@@ -74,7 +75,7 @@ paths:
   /announcement/add:
     post:
       tags:
-        - Announcement
+        - announcement
       summary: addAnnouncement
       requestBody:
         content:
@@ -100,7 +101,7 @@ paths:
   /announcement/{id}:
     get:
       tags:
-        - Announcement
+        - announcement
       summary: getAnnouncementById
       security:
         - bearerAuth: []
@@ -124,7 +125,7 @@ paths:
   /announcement/:
     get:
       tags:
-        - Announcement
+        - announcement
       summary: getAllAnnouncements
       security:
         - bearerAuth: []
@@ -142,7 +143,7 @@ paths:
   /announcement/{id}/update:
     patch:
       tags:
-        - Announcement
+        - announcement
       summary: updateAnnouncementById
       requestBody:
         content:
@@ -174,7 +175,7 @@ paths:
   /announcement/{id}/soft-delete:
     patch:
       tags:
-        - Announcement
+        - announcement
       summary: softDeleteAnnouncementById
       requestBody:
         content: {}
@@ -200,7 +201,7 @@ paths:
   /announcement/{id}/delete:
     delete:
       tags:
-        - Announcement
+        - announcement
       summary: deleteAnnouncementById
       security:
         - bearerAuth: []
@@ -216,6 +217,162 @@ paths:
             type: string
           required: true
           example: 63cacf1c13ef8d8f038b1260
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /due/add:
+    post:
+      tags:
+        - due
+      summary: addDue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                dueType: quiz
+                dueName: unit 2 quiz
+                courseName: physics 02
+                dueTopic: unit 2 motion and forces
+                dueDate: 20 Dec 2017 - 9:00 PM
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /due/{id}:
+    get:
+      tags:
+        - due
+      summary: getDueById
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cb0ea72e7ba26bf5b1ab8a
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /due/:
+    get:
+      tags:
+        - due
+      summary: getAllDues
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /due/{id}/update:
+    patch:
+      tags:
+        - due
+      summary: updateDueById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                dueType: quiz
+                dueName: unit 2 quiz
+                courseName: physics 02
+                dueTopic: unit 2 motion and forces
+                dueDate: 20 Dec 2017 - 9:00 PM
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cb0ea72e7ba26bf5b1ab8a
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /due/{id}/soft-delete:
+    patch:
+      tags:
+        - due
+      summary: softDeleteDueById
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cb0f532e7ba26bf5b1ab98
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /due/{id}/delete:
+    delete:
+      tags:
+        - due
+      summary: deleteDueById
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cb0f532e7ba26bf5b1ab98
       responses:
         '200':
           description: Successful response

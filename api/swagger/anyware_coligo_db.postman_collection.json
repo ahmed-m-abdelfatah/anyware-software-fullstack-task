@@ -99,7 +99,7 @@
 			]
 		},
 		{
-			"name": "Announcement",
+			"name": "announcement",
 			"item": [
 				{
 					"name": "addAnnouncement",
@@ -375,6 +375,284 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "due",
+			"item": [
+				{
+					"name": "addDue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dueType\": \"quiz\",\r\n    \"dueName\": \"unit 2 quiz\",\r\n    \"courseName\": \"physics 02\",\r\n    \"dueTopic\": \"unit 2 motion and forces\",\r\n    \"dueDate\": \"20 Dec 2017 - 9:00 PM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/due/add",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"due",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDueById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic\": \"hello world\",\r\n    \"desc\": \"announcementannouncementannouncementannouncement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/due/:id",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"due",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63cb0ea72e7ba26bf5b1ab8a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDues",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic\": \"hello world\",\r\n    \"desc\": \"announcementannouncementannouncementannouncement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/due/",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"due",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDueById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dueType\": \"quiz\",\r\n    \"dueName\": \"unit 2 quiz\",\r\n    \"courseName\": \"physics 02\",\r\n    \"dueTopic\": \"unit 2 motion and forces\",\r\n    \"dueDate\": \"20 Dec 2017 - 9:00 PM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/due/:id/update",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"due",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63cb0ea72e7ba26bf5b1ab8a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "softDeleteDueById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}{{channel}}/due/:id/soft-delete",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"due",
+								":id",
+								"soft-delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63cb0f532e7ba26bf5b1ab98"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDueById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}{{channel}}/due/:id/delete",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"due",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63cb0f532e7ba26bf5b1ab98"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -410,7 +688,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5N2I5YWYwYmM5MjY2NjE5NWFhZSIsImlzU2lnbmVkSW4iOnRydWUsImp3dEV4cGlyYXRpb24iOjE3MDMwMjE1MzIsImlhdCI6MTY3NDIyMTUzMiwiZXhwIjoxNjc0MjUwMzMyfQ.0C76zcYeS7f8P56CkNfsCsPo7tnRvmvRTWt638osETM",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5N2I5YWYwYmM5MjY2NjE5NWFhZSIsImlzU2lnbmVkSW4iOnRydWUsImp3dEV4cGlyYXRpb24iOjE3MDMwNTE4ODIsImlhdCI6MTY3NDI1MTg4MiwiZXhwIjoxNjc0MjgwNjgyfQ.lKwTtbWJH4Nn70COzujC88FDyKdQJj9Fg0epLeS8n0c",
 			"type": "default"
 		},
 		{
