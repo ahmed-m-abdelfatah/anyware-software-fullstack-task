@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+
+.announcement {
+  display: flex;
+  gap: 1.25rem;
+
+  &:not(:last-of-type) {
+    margin-bottom: 1.25rem;
+  }
+
+  .col {
+    &:first-of-type {
+      width: 30%;
+    }
+
+    &:last-of-type {
+      width: calc(70% - 1.25rem);
+      padding-#{$left}: 0.625rem;
+      border-left: 0.0625rem solid map-get($map: $colors, $key: 888);
+      color: map-get($map: $colors, $key: 888);
+      flex-grow: 1;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+
+      img {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .text {
+        p {
+          color: map-get($map: $colors, $key: 888);
+        }
+
+        & > * {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

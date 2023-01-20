@@ -17,7 +17,16 @@ const Home = () => {
 
           <div className='cards'>
             <Card title='Announcements' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem.'>
-              <Announcement />
+              <Announcement
+                username='john doe'
+                title='math 101'
+                description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem.'
+              />
+              <Announcement
+                username='Ahmed Abdelfatah'
+                title='steel'
+                description='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus vero quis rerum, atque dolor ad inventore? Numquam reiciendis ipsam porro aut nesciunt dolorum aliquam vitae ullam nisi excepturi, rem omnis dolorem ea nihil veritatis sit quisquam aliquid alias cum earum error enim. Veniam omnis quaerat obcaecati architecto, totam consequatur deserunt.'
+              />
             </Card>
             <Card title='What is due' description='Lorem ipsum dolor sit amet elit. Dolorem.'>
               <Due type='quiz' title='unit 2 quiz' list={{ course: 'physics02', topic: 'lorem', dueDate: 'lorem' }} />
