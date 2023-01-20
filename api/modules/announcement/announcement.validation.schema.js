@@ -13,3 +13,14 @@ export const getAnnouncementById = {
     id: announcementKeyPattern.id.required(),
   }),
 };
+
+export const updateAnnouncementById = {
+  params: joi.object().required().keys({
+    id: announcementKeyPattern.id.required(),
+  }),
+
+  body: joi.object().required().keys({
+    topic: announcementKeyPattern.announcementTopic.required(),
+    desc: announcementKeyPattern.announcementDescription.required(),
+  }),
+};

@@ -18,8 +18,17 @@ router.get(
   controller.getAnnouncementById,
 );
 
-// get announcements
+// get all announcements
+router.get('/', auth(endPoint.getAllAnnouncements), controller.getAllAnnouncements);
+
 // update announcement
+router.patch(
+  '/:id/update',
+  validation(validators.updateAnnouncementById),
+  auth(endPoint.updateAnnouncementById),
+  controller.updateAnnouncementById,
+);
+
 // delete announcement
 // soft delete announcement
 

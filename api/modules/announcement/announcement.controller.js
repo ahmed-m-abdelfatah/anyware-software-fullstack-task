@@ -30,3 +30,44 @@ export const getAnnouncementById = async (req, res) => {
     internalServerError(res, error);
   }
 };
+
+export const getAllAnnouncements = async (req, res) => {
+  try {
+    const announcements = await announcementModel.find({ isDeleted: false });
+    console.log('announcements', announcements);
+
+    if (!announcements || announcements.length === 0) {
+      return res.status(404).json({ message: ['There is no announcements right now'] }); // 404 Not Found
+    }
+
+    res.status(200).json({ message: announcements }); // 200 OK
+  } catch (error) {
+    internalServerError(res, error);
+  }
+};
+
+export const updateAnnouncementById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { topic, desc } = req.body;
+    const announcement = await announcementModel.findById(id);
+
+    if (!announcement || announcement.instructor != req.user.id || announcement.isDeleted === true) {
+      return res.status(404).json({ message: 'Announcement not found' }); // 404 Not Found
+    }
+
+    const updated = await announcementModel.findByIdAndUpdate(
+      id,
+      {
+        announcementTopic: topic,
+        announcementDescription: desc,
+        $inc: { __v: 1 },
+      },
+      { new: true },
+    );
+
+    res.status(200).json({ message: 'Done updating your announcement', updated }); // 200 OK
+  } catch (error) {
+    internalServerError(res, error);
+  }
+};

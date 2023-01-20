@@ -121,3 +121,53 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /announcement/:
+    get:
+      tags:
+        - Announcement
+      summary: getAllAnnouncements
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /announcement/{id}/update:
+    patch:
+      tags:
+        - Announcement
+      summary: updateAnnouncementById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                topic: hello world 2222222222222
+                desc: announcementannouncementannouncementannouncement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cacf1c13ef8d8f038b1260
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

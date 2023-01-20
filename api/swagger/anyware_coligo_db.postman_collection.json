@@ -195,6 +195,102 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getAllAnnouncements",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic\": \"hello world\",\r\n    \"desc\": \"announcementannouncementannouncementannouncement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/announcement/",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"announcement",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAnnouncementById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic\": \"hello world 2222222222222\",\r\n    \"desc\": \"announcementannouncementannouncementannouncement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/announcement/:id/update",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"announcement",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63cacf1c13ef8d8f038b1260"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
