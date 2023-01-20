@@ -1,4 +1,4 @@
-import './getENV.js';
+import './get_env.js';
 import express from 'express';
 import runningCors from './services/cors.js';
 import runningRateLimit from './services/rate_limit.js';
@@ -20,12 +20,12 @@ connectDB(localDB);
 // connectDB(globalDB);
 
 const server = app.listen(port, () => {
-  console.log('running......', port);
+  console.log('running server at port:', port);
 
   /**
    * SWAGGER DOCS NOTES
    * 1. don't make 2 end points end with the same name [add product = /add and add comment = /add] because the stupid converter will render the second one it should be [add product = product/add and add comment = comment/add]
    */
-  require('./swagger/postman_to_swagger.js');
-  swaggerDocs(app, ['./swagger/swagger.yaml']);
+  // require('./swagger/postman_to_swagger.js');
+  // swaggerDocs(app, ['./swagger/swagger.yaml']);
 });

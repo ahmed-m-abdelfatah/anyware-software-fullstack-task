@@ -1,28 +1,32 @@
-import * as swaggerJsDoc from 'swagger-jsdoc';
+import swaggerJsDoc from 'swagger-jsdoc';
 import * as swaggerUI from 'swagger-ui-express';
-import * as packageJson from './../package.json';
+
+const usedData = {
+  author: 'Ahmed Abdelfatah',
+  globalDomain: 'https://anyware-coligo-backend.onrender.com',
+  localDomain: `http://localhost:${process.env.PORT}`,
+  name: 'api',
+  channel: process.env.CHANNEL,
+  version: '1.0.0',
+};
 
 function swaggerDocs(app, apis) {
-  const protocol = 'http';
-  const domain = `localhost:${process.env.PORT}`;
-  const channel = process.env.CHANNEL;
-
   const swaggerSpecOptions = {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: packageJson.name,
-        version: packageJson.version,
+        title: usedData.author,
+        version: usedData.version,
       },
       servers: [
         {
           // local server
-          url: `${protocol}://${domain}${channel}`,
+          url: `${usedData.localDomain}${usedData.channel}`,
         },
-        // {
-        //   // global server
-        //   url: `http://route-exam-01-node.herokuapp.com${channel}`,
-        // },
+        {
+          // global server
+          url: `${usedData.globalDomain}${usedData.channel}`,
+        },
       ],
     },
     apis,
@@ -55,4 +59,4 @@ function swaggerDocs(app, apis) {
   });
 }
 
-module.exports = swaggerDocs;
+export default swaggerDocs;
