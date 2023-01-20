@@ -1,6 +1,7 @@
 import './Due.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHourglassHalf, faClipboardCheck, faClipboardQuestion } from '@fortawesome/free-solid-svg-icons';
+import Button from '../button/Button.js';
 
 const Quiz = props => {
   return (
@@ -22,7 +23,8 @@ const Quiz = props => {
         <li>Due Date: {props.list.dueDate}</li>
       </ul>
 
-      <button className='button'>{props.type === 'quiz' ? 'Start Quiz' : 'Solve Assignment'}</button>
+      <Button full>{props.type === 'quiz' ? 'Start Quiz' : 'Solve Assignment'}</Button>
+      {/* <button className='button'>{props.type === 'quiz' ? 'Start Quiz' : 'Solve Assignment'}</button> */}
     </div>
   );
 };

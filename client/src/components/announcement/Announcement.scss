@@ -4,11 +4,19 @@
   display: flex;
   gap: 1.25rem;
 
+  @include smMax {
+    flex-direction: column;
+  }
+
   &:not(:last-of-type) {
     margin-bottom: 1.25rem;
   }
 
   .col {
+    @include smMax {
+      width: 100% !important;
+    }
+
     &:first-of-type {
       width: 30%;
     }
@@ -19,6 +27,10 @@
       border-left: 0.0625rem solid map-get($map: $colors, $key: 888);
       color: map-get($map: $colors, $key: 888);
       flex-grow: 1;
+
+      @include smMax {
+        border: none;
+      }
     }
 
     .user {
