@@ -29,3 +29,12 @@ export const announcementKeyPattern = {
   announcementTopic: joi.string(),
   announcementDescription: joi.string(),
 };
+
+export const dueKeyPattern = {
+  id: joi.string().min(24).max(24),
+  dueType: joi.valid('quiz', 'assignment'),
+  dueName: joi.string(),
+  courseName: joi.string(),
+  dueTopic: joi.string(),
+  dueDate: joi.date(),
+};

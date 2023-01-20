@@ -34,7 +34,6 @@ export const getAnnouncementById = async (req, res) => {
 export const getAllAnnouncements = async (req, res) => {
   try {
     const announcements = await announcementModel.find({ isDeleted: false });
-    console.log('announcements', announcements);
 
     if (!announcements || announcements.length === 0) {
       return res.status(404).json({ message: ['There is no announcements right now'] }); // 404 Not Found
