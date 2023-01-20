@@ -19,6 +19,13 @@ export const addAnnouncement = async (req, res) => {
 
 export const getAnnouncementById = async (req, res) => {
   try {
+    const announcement = await announcementModel.findById(req.params.id);
+
+    if (!announcement) {
+      return res.status(404).json({ message: 'announcement not found' }); // 404 Not Found
+    }
+
+    res.status(200).json({ message: 'Done', announcement }); // 200 OK
   } catch (error) {
     internalServerError(res, error);
   }

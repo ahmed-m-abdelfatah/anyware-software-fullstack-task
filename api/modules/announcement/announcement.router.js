@@ -11,7 +11,12 @@ const router = express.Router();
 router.post('/add', validation(validators.addAnnouncement), auth(endPoint.addAnnouncement), controller.addAnnouncement);
 
 // get announcement
-router.post('/:id', controller.getAnnouncementById);
+router.get(
+  '/:id',
+  validation(validators.getAnnouncementById),
+  auth(endPoint.getAnnouncementById),
+  controller.getAnnouncementById,
+);
 
 // get announcements
 // update announcement

@@ -25,6 +25,7 @@ export const userKeyPattern = {
 };
 
 export const announcementKeyPattern = {
+  id: joi.string().min(24).max(24),
   announcementTopic: joi.string(),
   announcementDescription: joi.string(),
 };

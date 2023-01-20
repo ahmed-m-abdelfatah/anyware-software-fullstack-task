@@ -97,6 +97,106 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Announcement",
+			"item": [
+				{
+					"name": "addAnnouncement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic\": \"hello world\",\r\n    \"desc\": \"announcementannouncementannouncementannouncement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/announcement/add",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"announcement",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAnnouncementById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{tokenPassword}} {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic\": \"hello world\",\r\n    \"desc\": \"announcementannouncementannouncementannouncement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}{{channel}}/announcement/:id",
+							"host": [
+								"{{domain}}{{channel}}"
+							],
+							"path": [
+								"announcement",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63cacf1c13ef8d8f038b1260"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

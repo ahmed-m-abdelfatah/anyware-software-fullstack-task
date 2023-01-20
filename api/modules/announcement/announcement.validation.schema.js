@@ -7,3 +7,9 @@ export const addAnnouncement = {
     desc: announcementKeyPattern.announcementDescription.required(),
   }),
 };
+
+export const getAnnouncementById = {
+  params: joi.object().required().keys({
+    id: announcementKeyPattern.id.required(),
+  }),
+};
