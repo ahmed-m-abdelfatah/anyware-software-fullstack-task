@@ -1,6 +1,6 @@
 import './Due.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHourglassHalf, faClipboardCheck, faClipboardQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faHourglassHalf, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 import Button from '../button/Button.js';
 
 const Quiz = props => {
