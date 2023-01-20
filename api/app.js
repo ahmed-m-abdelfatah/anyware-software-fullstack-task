@@ -26,6 +26,7 @@ const server = app.listen(port, () => {
    * SWAGGER DOCS NOTES
    * 1. don't make 2 end points end with the same name [add product = /add and add comment = /add] because the stupid converter will render the second one it should be [add product = product/add and add comment = comment/add]
    */
-  // require('./swagger/postman_to_swagger.js');
-  // swaggerDocs(app, ['./swagger/swagger.yaml']);
+
+  import('./swagger/postman_to_swagger.js');
+  swaggerDocs(app, ['./swagger/swagger.yaml']);
 });

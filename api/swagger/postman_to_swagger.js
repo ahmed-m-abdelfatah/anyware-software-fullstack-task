@@ -1,6 +1,13 @@
-import * as path from 'path';
-import * as postmanToOpenApi from 'postman-to-openapi';
-const postmanCollection = path.join(__dirname, '../*.postman_collection.json');
+import path from 'path';
+import postmanToOpenApi from 'postman-to-openapi';
+
+// __dirname is not defined in ES module scope
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+console.log('__filename', __filename);
+const __dirname = path.dirname(__filename);
+
+const postmanCollection = path.join(__dirname, './anyware_coligo_db.postman_collection.json');
 const outputFile = path.join(__dirname, './swagger.yaml');
 
 (async function () {

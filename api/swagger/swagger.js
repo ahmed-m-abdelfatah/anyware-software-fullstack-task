@@ -2,10 +2,9 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import * as swaggerUI from 'swagger-ui-express';
 
 const usedData = {
-  author: 'Ahmed Abdelfatah',
   globalDomain: 'https://anyware-coligo-backend.onrender.com',
   localDomain: `http://localhost:${process.env.PORT}`,
-  name: 'api',
+  title: 'Anyware Coligo API',
   channel: process.env.CHANNEL,
   version: '1.0.0',
 };
@@ -15,7 +14,7 @@ function swaggerDocs(app, apis) {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: usedData.author,
+        title: usedData.title,
         version: usedData.version,
       },
       servers: [
@@ -46,7 +45,7 @@ function swaggerDocs(app, apis) {
   // Swagger UI options
   const swaggerUIOptions = {
     customCss: '.swagger-ui .topbar, .title span { display: none }',
-    customSiteTitle: 'olx api docs',
+    customSiteTitle: usedData.title,
   };
 
   // Swagger page
