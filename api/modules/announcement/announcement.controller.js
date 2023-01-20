@@ -71,3 +71,36 @@ export const updateAnnouncementById = async (req, res) => {
     internalServerError(res, error);
   }
 };
+
+export const softDeleteAnnouncementById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const announcement = await announcementModel.findById(id);
+
+    if (!announcement || announcement.instructor != req.user.id || announcement.isDeleted === true) {
+      return res.status(404).json({ message: 'Announcement not found' }); // 404 Not Found
+    }
+
+    await announcementModel.findByIdAndUpdate(
+      id,
+      {
+        isDeleted: true,
+      },
+      { new: true },
+    );
+
+    res.status(200).json({ message: 'your announcement moved to trash' }); // 200 OK
+  } catch (error) {
+    internalServerError(res, error);
+  }
+};
+
+export const deleteAnnouncementById = async (req, res) => {
+  try {
+    await announcementModel.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({ message: 'announcement has been deleted' }); // 200 OK
+  } catch (error) {
+    internalServerError(res, error);
+  }
+};

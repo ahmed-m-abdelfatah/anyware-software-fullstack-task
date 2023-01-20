@@ -171,3 +171,53 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /announcement/{id}/soft-delete:
+    patch:
+      tags:
+        - Announcement
+      summary: softDeleteAnnouncementById
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cacf1c13ef8d8f038b1260
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /announcement/{id}/delete:
+    delete:
+      tags:
+        - Announcement
+      summary: deleteAnnouncementById
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: '{{tokenPassword}} {{token}}'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 63cacf1c13ef8d8f038b1260
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

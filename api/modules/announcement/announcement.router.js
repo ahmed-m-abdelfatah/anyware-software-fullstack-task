@@ -29,7 +29,20 @@ router.patch(
   controller.updateAnnouncementById,
 );
 
-// delete announcement
 // soft delete announcement
+router.patch(
+  '/:id/soft-delete',
+  validation(validators.softDeleteAnnouncementById),
+  auth(endPoint.softDeleteAnnouncementById),
+  controller.softDeleteAnnouncementById,
+);
+
+// delete announcement
+router.delete(
+  '/:id/delete',
+  validation(validators.deleteAnnouncementById),
+  auth(endPoint.deleteAnnouncementById),
+  controller.deleteAnnouncementById,
+);
 
 export default router;

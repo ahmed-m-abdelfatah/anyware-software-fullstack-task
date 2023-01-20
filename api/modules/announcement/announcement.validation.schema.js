@@ -24,3 +24,15 @@ export const updateAnnouncementById = {
     desc: announcementKeyPattern.announcementDescription.required(),
   }),
 };
+
+export const softDeleteAnnouncementById = {
+  params: joi.object().required().keys({
+    id: announcementKeyPattern.id.required(),
+  }),
+};
+
+export const deleteAnnouncementById = {
+  params: joi.object().required().keys({
+    id: announcementKeyPattern.id.required(),
+  }),
+};
