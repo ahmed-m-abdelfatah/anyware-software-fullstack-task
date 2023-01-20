@@ -23,3 +23,8 @@ export const userKeyPattern = {
   token: joi.string(),
   role: joi.valid('admin', 'instructor', 'student'),
 };
+
+export const announcementKeyPattern = {
+  announcementTopic: joi.string(),
+  announcementDescription: joi.string(),
+};
