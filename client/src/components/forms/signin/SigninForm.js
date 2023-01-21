@@ -1,13 +1,16 @@
-import './SignupForm.scss';
+import './SigninForm.scss';
 import { useState } from 'react';
 import Button from '../../../components/button/Button.js';
 import validation from '../../../validation/validation.js';
 import * as validators from '../../../validation/validation_schema.js';
 import axiosRequest from '../../../utils/api_request/axios_request.js';
 import axiosServiceObj from '../../../utils/api_request/axios_service_objects.js';
+import { useNavigate } from 'react-router-dom';
+import * as paths from '../../../paths.js';
 
-const SignupForm = props => {
-  const [user, setUser] = useState({ name: '', userName: '', password: '', cPassword: '' });
+const SigninForm = props => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({ userName: '', password: '' });
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -58,8 +61,9 @@ const SignupForm = props => {
         setIsLoading(false);
       }
 
-      // go to login form
-      res?.status === 201 && props.setNewAccount(false);
+      // save user to storage
+      // go to home page
+      res?.status === 201 && navigate(paths.HOME_PATH);
 
       setTimeout(() => {
         setIsLoading(false);
@@ -68,9 +72,9 @@ const SignupForm = props => {
   };
 
   return (
-    <div className='signup-form'>
+    <div className='signin-form'>
       <div className='heading'>
-        <h1>Sign up</h1>
+        <h1>Sign in</h1>
       </div>
       <form className='form' onSubmit={handelSubmit}>
         {isError && (
@@ -80,10 +84,6 @@ const SignupForm = props => {
             ))}
           </ul>
         )}
-
-        <div className='input-control'>
-          <input type='text' name='name' autoComplete='off' placeholder='Name' onChange={handelChange} />
-        </div>
 
         <div className='input-control'>
           <input
@@ -100,20 +100,10 @@ const SignupForm = props => {
         </div>
 
         <div className='input-control'>
-          <input
-            type='password'
-            name='cPassword'
-            autoComplete='off'
-            placeholder='Confirmation Password'
-            onChange={handelChange}
-          />
-        </div>
-
-        <div className='input-control'>
           <p>
-            have an account{' '}
-            <span role='button' onClick={() => props.setNewAccount(false)}>
-              signin
+            Don't have an account <br />
+            <span role='button' onClick={() => props.setNewAccount(true)}>
+              create new account
             </span>
           </p>
           <Button full fill>
@@ -125,4 +115,4 @@ const SignupForm = props => {
   );
 };
 
-export default SignupForm;
+export default SigninForm;
