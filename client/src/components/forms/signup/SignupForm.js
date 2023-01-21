@@ -1,8 +1,15 @@
 import './SignupForm.scss';
 import { useState } from 'react';
 import Button from '../../../components/button/Button.js';
+import validation from '../../../validation/validation.js';
+import * as validators from '../../../validation/validation_schema.js';
+import axiosRequest from '../../../utils/api_request/axios_request.js';
+import axiosServiceObj from '../../../utils/api_request/axios_service_objects.js';
+import { useNavigate } from 'react-router-dom';
+import * as paths from '../../../paths.js';
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({ name: '', userName: '', password: '', cPassword: '' });
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,11 +30,8 @@ const SignupForm = () => {
     setIsLoading(true);
     clearErrors();
 
-    // add @ infront of userName
-    const editedUser = { ...user, userName: `@${user.userName}` };
-
     //validation
-    const validationErrors = validation(editedUser, validators.signup);
+    const validationErrors = validation(user, validators.signup);
 
     if (validationErrors?.length) {
       // console.log('from front end');
@@ -40,7 +44,7 @@ const SignupForm = () => {
     } else {
       // console.log('from back end');
       // call the backend
-      const res = await axiosRequest(axiosServiceObj.signup(editedUser));
+      const res = await axiosRequest(axiosServiceObj.signup(user));
 
       // handel req errors
       if (res?.response?.status === 405) {
@@ -58,7 +62,7 @@ const SignupForm = () => {
       }
 
       // go to login page
-      res?.status === 201 && router.push('/admin/login');
+      res?.status === 201 && navigate(paths.homePath);
 
       setTimeout(() => {
         setIsLoading(false);

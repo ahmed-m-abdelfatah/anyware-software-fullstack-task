@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes.js';
-import { isMobileScreen } from '../../utilities.js';
+import { isMobileScreen } from '../../utils/utilities.js';
 
 const initState = {
   active: isMobileScreen() === false,

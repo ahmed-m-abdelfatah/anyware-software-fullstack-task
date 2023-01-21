@@ -5,7 +5,7 @@ const validation = (obj, schema) => {
 
   if (validationResult?.error?.details) {
     validationResult.error.details.forEach(detail => {
-      const msg = detail.message.replace(/\"/g, '');
+      const msg = detail.message.replace(/"/g, '');
 
       validationErrors.push({
         msg: msg.charAt(0).toUpperCase() + msg.slice(1),
