@@ -1,6 +1,6 @@
 import { getFromStorage, keys } from '../browser_storage/local_storage.js';
 
-const baseUrl = `http://localhost:3030/api`;
+const baseUrl = `https://anyware-software-fullstack-task-api.onrender.com/api`;
 
 const getToken = () => {
   // get token more than one
