@@ -15,11 +15,14 @@
     "swagger-ui-express": "^4.4.0"
   },
   "description": "",
+  "engines": {
+    "node": "16.x"
+  },
   "keywords": [],
   "license": "ISC",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "type": "module",
   "version": "1.0.0"
