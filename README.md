@@ -34,7 +34,7 @@ Backend Part:
 ### Delivery:
 - [X] Upload your code to a GitHub account, send the URL and specify the time you spent writing the
 challenge.
-- [ ] (Optional) Deploy the challenge into one of the free platforms (Example: https://www.heroku.com/ ).
+- [X] (Optional) Deploy the challenge into one of the free platforms (Example: https://www.heroku.com/ ).
 
 ---
 
@@ -49,6 +49,5 @@ challenge.
 - [Task pdf](./Fullstack_Challenge.pdf)
 - [Task Images](./img/imgs.md)
 - [Time Consumed](https://wakatime.com/@ahmed_m_abdelfatah/projects/dzqikehvsp?start=2023-01-17&end=2023-01-21)
-- ...
-<!-- - [Backend Live Deployment]() -->
-<!-- - [Frontend Live Deployment]() -->
+- [Backend Live Deployment](https://anyware-software-fullstack-task-api.onrender.com/docs)
+- [Frontend Live Deployment](https://anyware-software-fullstack-task-client.vercel.app)
