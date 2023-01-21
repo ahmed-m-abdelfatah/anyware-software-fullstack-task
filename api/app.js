@@ -13,11 +13,11 @@ runningCors(app);
 runningRateLimit(app);
 appRoutes(app);
 
-const localDB = process.env.DB_LOCAL_URI;
+// const localDB = process.env.DB_LOCAL_URI;
 const globalDB = process.env.DB_GLOBAL_URI;
 
-connectDB(localDB);
-// connectDB(globalDB);
+// connectDB(localDB);
+connectDB(globalDB);
 
 const server = app.listen(port, () => {
   console.log('running server at port:', port);
