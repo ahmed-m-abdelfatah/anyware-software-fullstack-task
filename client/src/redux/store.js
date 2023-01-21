@@ -6,6 +6,7 @@ const store = createStore(
     countReducer: reducers.countReducer,
     sidebarReducer: reducers.sidebarReducer,
     authReducer: reducers.authReducer,
+    homeReducer: reducers.homeReducer,
   }),
 );
 

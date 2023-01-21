@@ -33,10 +33,13 @@ export const getAnnouncementById = async (req, res) => {
 
 export const getAllAnnouncements = async (req, res) => {
   try {
-    const announcements = await announcementModel.find({ isDeleted: false });
+    const announcements = await announcementModel.find({ isDeleted: false }).populate({
+      path: 'instructor',
+      select: 'name -_id',
+    });
 
     if (!announcements || announcements.length === 0) {
-      return res.status(404).json({ message: ['There is no announcements right now'] }); // 404 Not Found
+      return res.status(200).json({ message: ['There is no announcements right now'] }); // 200 OK
     }
 
     res.status(200).json({ message: announcements }); // 200 OK

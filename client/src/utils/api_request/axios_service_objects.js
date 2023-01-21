@@ -30,11 +30,19 @@ const logout = () => ({
   },
 });
 
-const getAllAnnouncements = token => ({
+const getAllAnnouncements = () => ({
   method: 'GET',
   url: `${baseUrl}/announcement/`,
   headers: {
-    Authorization: token ? process.env.REACT_PUBLIC_BEARER_SECRETE + ' ' + token : getToken(),
+    Authorization: getToken(),
+  },
+});
+
+const getAllDues = () => ({
+  method: 'GET',
+  url: `${baseUrl}/due/`,
+  headers: {
+    Authorization: getToken(),
   },
 });
 
@@ -43,6 +51,7 @@ const axiosServiceObj = {
   login,
   logout,
   getAllAnnouncements,
+  getAllDues,
 };
 
 export default axiosServiceObj;

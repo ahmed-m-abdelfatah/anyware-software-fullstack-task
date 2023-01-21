@@ -36,10 +36,13 @@ export const getDueById = async (req, res) => {
 
 export const getAllDues = async (req, res) => {
   try {
-    const dues = await dueModel.find({ isDeleted: false });
+    const dues = await dueModel.find({ isDeleted: false }).populate({
+      path: 'instructor',
+      select: 'name -_id',
+    });
 
     if (!dues || dues.length === 0) {
-      return res.status(404).json({ message: ['There is no dues right now'] }); // 404 Not Found
+      return res.status(200).json({ message: ['There is no dues right now'] }); // 200 OK
     }
 
     res.status(200).json({ message: dues }); // 200 OK

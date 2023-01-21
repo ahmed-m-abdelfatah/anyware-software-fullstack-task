@@ -6,7 +6,29 @@ import Card from '../../components/card/Card.js';
 import Announcement from '../../components/announcement/Announcement.js';
 import Due from '../../components/due/Due.js';
 
-const Home = () => {
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import axiosRequest from '../../utils/api_request/axios_request.js';
+import axiosServiceObj from '../../utils/api_request/axios_service_objects.js';
+import { getData } from '../../redux/actionGenerators/homeGenerators.js';
+
+export const Home = props => {
+  useEffect(() => {
+    const getData = async () => {
+      const res1 = await axiosRequest(axiosServiceObj.getAllAnnouncements());
+      const res2 = await axiosRequest(axiosServiceObj.getAllDues());
+
+      if ((res1.status = res2.status === 200)) {
+        props.getData({
+          announcements: res1.data,
+          dues: res2.data,
+        });
+      }
+    };
+
+    getData();
+  }, [props]);
+
   return (
     <main className='home'>
       <Sidebar />
@@ -43,4 +65,15 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = state => ({
+  announcements: state.homeReducer.announcements,
+  dues: state.homeReducer.dues,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getData: payload => dispatch(getData(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
