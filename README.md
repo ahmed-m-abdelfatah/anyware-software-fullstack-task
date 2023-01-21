@@ -47,4 +47,5 @@ challenge.
 
 ## Solution Data:
 - [Time Consumed](https://wakatime.com/@ahmed_m_abdelfatah/projects/dzqikehvsp?start=2023-01-17&end=2023-01-21)
+- [Task Images](./img/imgs.md)
 - ...

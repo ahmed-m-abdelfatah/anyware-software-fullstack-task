@@ -60,6 +60,8 @@ input {
   padding: 0.625rem;
   border-radius: 1.25rem;
   padding-#{$left}: 2.5rem;
+  outline: none;
+  border: 1px solid map-get($map: $colors, $key: main-black);
 
   &::placeholder {
     text-transform: capitalize;
