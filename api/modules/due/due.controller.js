@@ -3,11 +3,11 @@ import internalServerError from '../../utils/internal_server_error.js';
 
 export const addDue = async (req, res) => {
   try {
-    const { dueType, dueName, courseName, dueTopic, dueDate } = req.body;
+    const { dueType, dueTitle, courseName, dueTopic, dueDate } = req.body;
 
     const due = await dueModel.create({
       dueType,
-      dueName,
+      dueTitle,
       courseName,
       dueTopic,
       dueDate,
@@ -41,11 +41,11 @@ export const getAllDues = async (req, res) => {
       select: 'name -_id',
     });
 
-    if (!dues || dues.length === 0) {
-      return res.status(200).json({ message: ['There is no dues right now'] }); // 200 OK
-    }
+    // if (!dues || dues.length === 0) {
+    //   return res.status(200).json({ message: ['There is no dues right now'] }); // 200 OK
+    // }
 
-    res.status(200).json({ message: dues }); // 200 OK
+    res.status(200).json({ data: dues }); // 200 OK
   } catch (error) {
     internalServerError(res, error);
   }
@@ -54,7 +54,7 @@ export const getAllDues = async (req, res) => {
 export const updateDueById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { dueType, dueName, courseName, dueTopic, dueDate } = req.body;
+    const { dueType, dueTitle, courseName, dueTopic, dueDate } = req.body;
     const due = await dueModel.findById(id);
 
     if (!due || due.instructor != req.user.id || due.isDeleted === true) {
@@ -65,7 +65,7 @@ export const updateDueById = async (req, res) => {
       id,
       {
         dueType,
-        dueName,
+        dueTitle,
         courseName,
         dueTopic,
         dueDate,

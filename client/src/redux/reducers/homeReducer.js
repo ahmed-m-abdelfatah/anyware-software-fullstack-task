@@ -1,3 +1,6 @@
+import axiosRequest from '../../utils/api_request/axios_request.js';
+import axiosServiceObj from '../../utils/api_request/axios_service_objects.js';
+import { getData } from '../actionGenerators/homeGenerators.js';
 import * as actionTypes from '../actionTypes.js';
 
 const initState = {

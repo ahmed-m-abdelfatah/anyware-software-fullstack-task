@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const dueSchema = new mongoose.Schema(
   {
     dueType: { type: String, enum: ['quiz', 'assignment'], required: true },
-    dueName: { type: String, required: true },
+    dueTitle: { type: String, required: true },
     courseName: { type: String, required: true },
     dueTopic: { type: String, required: true },
     // dueDate: { type: Date, required: true },

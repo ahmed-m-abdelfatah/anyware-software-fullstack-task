@@ -38,11 +38,11 @@ export const getAllAnnouncements = async (req, res) => {
       select: 'name -_id',
     });
 
-    if (!announcements || announcements.length === 0) {
-      return res.status(200).json({ message: ['There is no announcements right now'] }); // 200 OK
-    }
+    // if (!announcements || announcements.length === 0) {
+    //   return res.status(200).json({ message: ['There is no announcements right now'] }); // 200 OK
+    // }
 
-    res.status(200).json({ message: announcements }); // 200 OK
+    res.status(200).json({ data: announcements }); // 200 OK
   } catch (error) {
     internalServerError(res, error);
   }

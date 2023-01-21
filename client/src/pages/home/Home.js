@@ -13,22 +13,11 @@ import axiosRequest from '../../utils/api_request/axios_request.js';
 import axiosServiceObj from '../../utils/api_request/axios_service_objects.js';
 
 export const Home = props => {
-  console.log('props', props);
-
   useEffect(() => {
-    const getHomePageData = async () => {
-      const res1 = await axiosRequest(axiosServiceObj.getAllAnnouncements());
-      const res2 = await axiosRequest(axiosServiceObj.getAllDues());
+    props.getData();
 
-      if (res1.status === 200 && res2.status === 200) {
-        props.getData({
-          announcements: res1.data.message,
-          dues: res2.data.message,
-        });
-      }
-    };
-    getHomePageData();
-  }, [props]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main className='home'>
@@ -42,12 +31,13 @@ export const Home = props => {
             <Card title='Announcements' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem.'>
               {props.announcements.length === 0
                 ? '😢 There is no announcements right now.'
-                : props.announcements.map(el => {
+                : props.announcements.map((el, index) => {
                     return (
                       <Announcement
-                        username='john doe'
-                        title='math 101'
-                        description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem.'
+                        key={index}
+                        username={el.instructor.name}
+                        title={el.announcementTopic}
+                        description={el.announcementDescription}
                       />
                     );
                   })}
@@ -55,12 +45,13 @@ export const Home = props => {
             <Card title='What is due' description='Lorem ipsum dolor sit amet elit. Dolorem.'>
               {props.dues.length === 0
                 ? '😎 There is no due tasks right now.'
-                : props.dues.map(el => {
+                : props.dues.map((el, index) => {
                     return (
                       <Due
-                        type='assignment'
-                        title='12 - 12 Assignment'
-                        list={{ course: 'arabic k12', topic: 'الوحدة الثانية', dueDate: 'lorem' }}
+                        key={index}
+                        type={el.dueType}
+                        title={el.dueTitle}
+                        list={{ course: el.courseName, topic: el.dueTopic, dueDate: el.dueDate }}
                       />
                     );
                   })}
@@ -73,8 +64,6 @@ export const Home = props => {
 };
 
 const mapStateToProps = state => {
-  console.log('state', state);
-
   return {
     announcements: state.homeReducer.announcements,
     dues: state.homeReducer.dues,
@@ -83,7 +72,19 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: payload => dispatch(getData(payload)),
+    getData: async () => {
+      const res1 = await axiosRequest(axiosServiceObj.getAllAnnouncements());
+      const res2 = await axiosRequest(axiosServiceObj.getAllDues());
+
+      if (res1.status === 200 && res2.status === 200) {
+        return dispatch(
+          getData({
+            announcements: res1.data.data,
+            dues: res2.data.data,
+          }),
+        );
+      }
+    },
   };
 };
 

@@ -4,7 +4,7 @@ import { default as joi } from 'joi';
 export const addDue = {
   body: joi.object().required().keys({
     dueType: dueKeyPattern.dueType.required(),
-    dueName: dueKeyPattern.dueName.required(),
+    dueTitle: dueKeyPattern.dueTitle.required(),
     courseName: dueKeyPattern.courseName.required(),
     dueTopic: dueKeyPattern.dueTopic.required(),
     dueDate: dueKeyPattern.dueDate.required(),
@@ -24,7 +24,7 @@ export const updateDueById = {
 
   body: joi.object().required().keys({
     dueType: dueKeyPattern.dueType.required(),
-    dueName: dueKeyPattern.dueName.required(),
+    dueTitle: dueKeyPattern.dueTitle.required(),
     courseName: dueKeyPattern.courseName.required(),
     dueTopic: dueKeyPattern.dueTopic.required(),
     dueDate: dueKeyPattern.dueDate.required(),
