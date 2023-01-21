@@ -6,9 +6,29 @@ import {
   setUserTokenFromBrowserStorage,
   deleteUserTokenFromBrowserStorage,
 } from '../../redux/actionGenerators/authGenerators.js';
+import { getFromStorage, keys } from '../../utils/browser_storage/local_storage.js';
+import { isTokenStillValid, verifyToken } from '../../utils/token_check.js';
 
 export const RequireAuth = props => {
-  if (props.token != null) {
+  // get token from browser storage
+  const tokenFromBrowserStorage = getFromStorage(keys.token);
+  let checkTokenFromBrowserStorage;
+
+  if (tokenFromBrowserStorage.length > 0) {
+    // check token valid
+    checkTokenFromBrowserStorage = verifyToken(tokenFromBrowserStorage) && isTokenStillValid(tokenFromBrowserStorage);
+
+    if (checkTokenFromBrowserStorage === true) {
+      return props.children;
+    }
+  }
+
+  if (!tokenFromBrowserStorage || checkTokenFromBrowserStorage === false) {
+    props.deleteUserTokenFromBrowserStorage();
+    return <Navigate to={paths.REGISTRATION_PATH} />;
+  }
+
+  if (props.token) {
     return props.children;
   } else {
     return <Navigate to={paths.REGISTRATION_PATH} />;
@@ -16,14 +36,14 @@ export const RequireAuth = props => {
 };
 
 const mapStateToProps = state => ({
-  active: state.authReducer.token,
+  token: state.authReducer.token,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     setUserTokenFromApi: token => dispatch(setUserTokenFromApi(token)),
     setUserTokenFromBrowserStorage: token => dispatch(setUserTokenFromBrowserStorage(token)),
-    deleteUserTokenFromBrowserStorage: token => dispatch(deleteUserTokenFromBrowserStorage(token)),
+    deleteUserTokenFromBrowserStorage: () => dispatch(deleteUserTokenFromBrowserStorage()),
   };
 };
 

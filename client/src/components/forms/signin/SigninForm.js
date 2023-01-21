@@ -135,7 +135,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setUserTokenFromApi: token => dispatch(setUserTokenFromApi(token)),
     setUserTokenFromBrowserStorage: token => dispatch(setUserTokenFromBrowserStorage(token)),
-    deleteUserTokenFromBrowserStorage: token => dispatch(deleteUserTokenFromBrowserStorage(token)),
+    deleteUserTokenFromBrowserStorage: () => dispatch(deleteUserTokenFromBrowserStorage()),
   };
 };
 
