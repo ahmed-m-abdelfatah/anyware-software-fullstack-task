@@ -62,7 +62,7 @@ const SignupForm = () => {
       }
 
       // go to login page
-      res?.status === 201 && navigate(paths.homePath);
+      res?.status === 201 && navigate(paths.HOME_PATH);
 
       setTimeout(() => {
         setIsLoading(false);

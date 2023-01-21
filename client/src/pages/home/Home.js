@@ -8,7 +8,7 @@ import Due from '../../components/due/Due.js';
 
 const Home = () => {
   return (
-    <main className='main'>
+    <main className='home'>
       <Sidebar />
       <div className='content'>
         <Navbar />

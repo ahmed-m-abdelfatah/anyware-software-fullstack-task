@@ -1,3 +1,3 @@
 // main paths
-export const homePath = '/';
-export const loginPath = '/login';
+export const REGISTRATION_PATH = '/';
+export const HOME_PATH = '/home';

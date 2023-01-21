@@ -5,6 +5,7 @@ const store = createStore(
   combineReducers({
     countReducer: reducers.countReducer,
     sidebarReducer: reducers.sidebarReducer,
+    authReducer: reducers.authReducer,
   }),
 );
 

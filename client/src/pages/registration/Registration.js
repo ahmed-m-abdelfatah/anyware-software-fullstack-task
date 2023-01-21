@@ -3,7 +3,7 @@ import SignupForm from '../../components/forms/signup/SignupForm.js';
 
 const Registration = () => {
   return (
-    <main className='main'>
+    <main className='registration'>
       <section className='wrapper'>
         <SignupForm />
       </section>
