@@ -5,7 +5,8 @@ const baseUrl = `http://localhost:3030/api`;
 const getToken = () => {
   // get token more than one
   if (typeof window != 'undefined') {
-    return process.env.REACT_PUBLIC_BEARER_SECRETE + ' ' + getFromStorage(keys.token);
+    // console.log('process.env', process.env);
+    return process.env.REACT_APP_BEARER_SECRETE + ' ' + getFromStorage(keys.token);
   }
 };
 
@@ -21,9 +22,17 @@ const login = body => ({
   data: body,
 });
 
-const logout = token => ({
+const logout = () => ({
   method: 'POST',
   url: `${baseUrl}/auth/logout`,
+  headers: {
+    Authorization: getToken(),
+  },
+});
+
+const getAllAnnouncements = token => ({
+  method: 'GET',
+  url: `${baseUrl}/announcement/`,
   headers: {
     Authorization: token ? process.env.REACT_PUBLIC_BEARER_SECRETE + ' ' + token : getToken(),
   },
@@ -33,6 +42,7 @@ const axiosServiceObj = {
   signup,
   login,
   logout,
+  getAllAnnouncements,
 };
 
 export default axiosServiceObj;

@@ -46,6 +46,9 @@ challenge.
 - add cors (only for defined urls) and swagger in the backend 
 
 ## Solution Data:
-- [Time Consumed](https://wakatime.com/@ahmed_m_abdelfatah/projects/dzqikehvsp?start=2023-01-17&end=2023-01-21)
+- [Task pdf](./Fullstack_Challenge.pdf)
 - [Task Images](./img/imgs.md)
+- [Time Consumed](https://wakatime.com/@ahmed_m_abdelfatah/projects/dzqikehvsp?start=2023-01-17&end=2023-01-21)
 - ...
+<!-- - [Backend Live Deployment]() -->
+<!-- - [Frontend Live Deployment]() -->

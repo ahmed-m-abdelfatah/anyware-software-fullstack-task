@@ -14,11 +14,17 @@ import {
 import { Link, NavLink } from 'react-router-dom';
 import * as paths from '../../paths.js';
 import { deleteUserTokenFromBrowserStorage } from '../../redux/actionGenerators/authGenerators.js';
+import axiosRequest from '../../utils/api_request/axios_request.js';
+import axiosServiceObj from '../../utils/api_request/axios_service_objects.js';
 
 export const Sidebar = props => {
-  const handelLogout = e => {
+  const handelLogout = async e => {
     e.preventDefault();
-    props.deleteUserTokenFromBrowserStorage();
+    const res = await axiosRequest(axiosServiceObj.logout());
+
+    if (res.status === 200) {
+      props.deleteUserTokenFromBrowserStorage();
+    }
   };
 
   return (
