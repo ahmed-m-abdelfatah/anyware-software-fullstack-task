@@ -1,4 +1,4 @@
-import './SignupForm.scss';
+import '../Form.scss';
 import { useState } from 'react';
 import Button from '../../../components/button/Button.js';
 import validation from '../../../validation/validation.js';
@@ -68,7 +68,7 @@ const SignupForm = props => {
   };
 
   return (
-    <div className='signup-form'>
+    <div className='form-container'>
       <div className='heading'>
         <h1>Sign up</h1>
       </div>

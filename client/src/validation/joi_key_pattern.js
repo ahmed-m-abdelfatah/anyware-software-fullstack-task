@@ -1,7 +1,7 @@
 import { default as joi } from 'joi';
 
 export const userKeyPattern = {
-  name: joi.string().pattern(new RegExp('^[a-zA-Z].*$')).messages({
+  name: joi.string().pattern(new RegExp('^[a-zA-Z]+$')).messages({
     'string.pattern.base': 'The name should be in english alphabet',
   }),
   userName: joi.string().pattern(new RegExp('^@[a-zA-Z0-9]{3,14}$')).messages({

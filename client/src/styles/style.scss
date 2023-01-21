@@ -61,6 +61,10 @@ input {
   border-radius: 1.25rem;
   padding-#{$left}: 2.5rem;
 
+  &::placeholder {
+    text-transform: capitalize;
+  }
+
   &:focus {
     &::placeholder {
       opacity: 0;

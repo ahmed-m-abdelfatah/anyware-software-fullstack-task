@@ -1,7 +1,24 @@
-@use '../../../styles/variables' as *;
+@use '../../styles/variables' as *;
 
-.signin-form {
+.form-container {
   text-align: center;
+  max-width: calc(20rem + 1.25rem * 2);
+
+  ul {
+    text-align: start;
+    color: map-get($map: $colors, $key: main-black);
+    counter-reset: errors;
+
+    li {
+      margin-bottom: 10px;
+      &::before {
+        color: map-get($map: $colors, $key: main-red);
+        counter-increment: errors;
+        content: 'Error ' counter(errors) ': ';
+        font-weight: bold;
+      }
+    }
+  }
 
   .heading {
     h1 {

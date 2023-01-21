@@ -1,4 +1,4 @@
-import './SigninForm.scss';
+import '../Form.scss';
 import { useState } from 'react';
 import Button from '../../../components/button/Button.js';
 import validation from '../../../validation/validation.js';
@@ -8,7 +8,15 @@ import axiosServiceObj from '../../../utils/api_request/axios_service_objects.js
 import { useNavigate } from 'react-router-dom';
 import * as paths from '../../../paths.js';
 
-const SigninForm = props => {
+import React from 'react';
+import { connect } from 'react-redux';
+import {
+  deleteUserTokenFromBrowserStorage,
+  setUserTokenFromApi,
+  setUserTokenFromBrowserStorage,
+} from '../../../redux/actionGenerators/authGenerators.js';
+
+export const SigninForm = props => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ userName: '', password: '' });
   const [isError, setIsError] = useState(false);
@@ -31,7 +39,7 @@ const SigninForm = props => {
     clearErrors();
 
     //validation
-    const validationErrors = validation(user, validators.signup);
+    const validationErrors = validation(user, validators.login);
 
     if (validationErrors?.length) {
       // console.log('from front end');
@@ -44,10 +52,10 @@ const SigninForm = props => {
     } else {
       // console.log('from back end');
       // call the backend
-      const res = await axiosRequest(axiosServiceObj.signup(user));
+      const res = await axiosRequest(axiosServiceObj.login(user));
 
       // handel req errors
-      if (res?.response?.status === 405) {
+      if (res?.response?.status === 404) {
         setIsError(true);
         setErrorMsg([res.response.data.message]);
         setIsLoading(false);
@@ -61,9 +69,13 @@ const SigninForm = props => {
         setIsLoading(false);
       }
 
-      // save user to storage
-      // go to home page
-      res?.status === 201 && navigate(paths.HOME_PATH);
+      if (res?.status === 201) {
+        // save user to auth reducer
+        props.setUserTokenFromApi(res.data.token);
+
+        // go to home page
+        res?.status === 201 && navigate(paths.HOME_PATH);
+      }
 
       setTimeout(() => {
         setIsLoading(false);
@@ -72,7 +84,7 @@ const SigninForm = props => {
   };
 
   return (
-    <div className='signin-form'>
+    <div className='form-container'>
       <div className='heading'>
         <h1>Sign in</h1>
       </div>
@@ -107,7 +119,7 @@ const SigninForm = props => {
             </span>
           </p>
           <Button full fill>
-            {isLoading ? 'Loading...' : 'Sign up'}
+            {isLoading ? 'Loading...' : 'log in'}
           </Button>
         </div>
       </form>
@@ -115,4 +127,16 @@ const SigninForm = props => {
   );
 };
 
-export default SigninForm;
+const mapStateToProps = state => ({
+  active: state.authReducer.token,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUserTokenFromApi: token => dispatch(setUserTokenFromApi(token)),
+    setUserTokenFromBrowserStorage: token => dispatch(setUserTokenFromBrowserStorage(token)),
+    deleteUserTokenFromBrowserStorage: token => dispatch(deleteUserTokenFromBrowserStorage(token)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
