@@ -3,7 +3,7 @@
 .nav {
   display: flex;
   flex-wrap: wrap;
-  background-color: map-get($map: $colors, $key: white);
+  background-color: map-get($map: $colors, $key: main-white);
   padding: 0.625rem 1.25rem;
 
   @include smMax {
@@ -54,18 +54,6 @@
       .search-icon {
         position: absolute;
         #{$left}: 0.625rem;
-      }
-
-      input {
-        padding: 0.625rem;
-        border-radius: 1.25rem;
-        padding-#{$left}: 2.5rem;
-
-        &:focus {
-          &::placeholder {
-            opacity: 0;
-          }
-        }
       }
     }
 
