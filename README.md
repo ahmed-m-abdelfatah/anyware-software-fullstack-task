@@ -7,7 +7,7 @@ Create a full-stack application that looks like the image below using (React and
 (Express.js or Nest.js and MongoDB) for the backend.
 
 ### Frontend Part:
-- [ ] This dashboard should be rendered only to the logged-in users. Make a log-in/out button on the home page
+- [X] This dashboard should be rendered only to the logged-in users. Make a log-in/out button on the home page
 that allows the user to login without any username or password. If the user is logged in, the dashboard is
 shown, otherwise, the home page is shown. Make a Higher Order Component (HOC) called requireAuth that
 renders the dashboard component only to logged-in users and redirects other users to the home page.
@@ -22,9 +22,9 @@ on it.
 You are free to use any package in React.js. If you choose a framework that generates boilerplate code, please
 specify in the README which code was written by you.
 Backend Part:
-- [ ] Create a web service that will be used to retrieve all announcement data.
-- [ ] Create a web service that will be used to retrieve all of the quiz data.
-- [ ] Make all of the CRUD operations for the announcement and quiz.
+- [X] Create a web service that will be used to retrieve all announcement data.
+- [X] Create a web service that will be used to retrieve all of the quiz data.
+- [X] Make all of the CRUD operations for the announcement and quiz.
 
 ### Be aware that we will mainly take into consideration the following evaluation criteria:
 - How clean and structured your code is.
@@ -41,7 +41,9 @@ challenge.
 ## Some features:
 - sidebar shows by default in bigger screens and hidden in smaller ones
 - app is responsive
-<!-- - add 404 page  -->
+- add 404 page 
+- add joi validation in both frontend and backend
+- add cors (only for defined urls) and swagger in the backend 
 
 ## Solution Data:
 - [Time Consumed](https://wakatime.com/@ahmed_m_abdelfatah/projects/dzqikehvsp?start=2023-01-17&end=2023-01-21)
