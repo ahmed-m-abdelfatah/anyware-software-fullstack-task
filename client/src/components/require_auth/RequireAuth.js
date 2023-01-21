@@ -7,23 +7,24 @@ import {
   deleteUserTokenFromBrowserStorage,
 } from '../../redux/actionGenerators/authGenerators.js';
 import { getFromStorage, keys } from '../../utils/browser_storage/local_storage.js';
-import { isTokenStillValid, verifyToken } from '../../utils/token_check.js';
+// import { isTokenStillValid, verifyToken } from '../../utils/token_check.js';
 
 export const RequireAuth = props => {
   // get token from browser storage
   const tokenFromBrowserStorage = getFromStorage(keys.token);
-  let checkTokenFromBrowserStorage;
+  // let checkTokenFromBrowserStorage;
 
-  if (tokenFromBrowserStorage.length > 0) {
+  if (tokenFromBrowserStorage) {
     // check token valid
-    checkTokenFromBrowserStorage = verifyToken(tokenFromBrowserStorage) && isTokenStillValid(tokenFromBrowserStorage);
+    // checkTokenFromBrowserStorage = verifyToken(tokenFromBrowserStorage) && isTokenStillValid(tokenFromBrowserStorage);
 
-    if (checkTokenFromBrowserStorage === true) {
-      return props.children;
-    }
+    // if (checkTokenFromBrowserStorage === true) {
+    return props.children;
+    // }
   }
 
-  if (!tokenFromBrowserStorage || checkTokenFromBrowserStorage === false) {
+  // if (!tokenFromBrowserStorage || checkTokenFromBrowserStorage === false) {
+  if (!tokenFromBrowserStorage) {
     props.deleteUserTokenFromBrowserStorage();
     return <Navigate to={paths.REGISTRATION_PATH} />;
   }

@@ -1,13 +1,18 @@
-import { default as jwt } from 'jsonwebtoken';
+// THERE IS ERRORS IN THS PACKAGE jsonwebtoken
 
-export const verifyToken = token => {
-  const decoded = jwt.decode(token);
-  return decoded?.isSignedIn === true;
-};
+// import { default as jwt } from 'jsonwebtoken';
+// console.log('jwt', jwt);
 
-export const isTokenStillValid = token => {
-  const decoded = jwt.decode(token);
-  const future = decoded.jwtExpiration;
-  const current = Math.floor(Date.now() / 1000);
-  return future > current;
-};
+// export const verifyToken = token => {
+//   console.log('token', token);
+//   // const decoded = jwt.decode(token);
+//   // return decoded?.isSignedIn === true;
+// };
+
+// export const isTokenStillValid = token => {
+//   console.log('token', token);
+//   // const decoded = jwt.decode(token);
+//   // const future = decoded.jwtExpiration;
+//   // const current = Math.floor(Date.now() / 1000);
+//   // return future > current;
+// };

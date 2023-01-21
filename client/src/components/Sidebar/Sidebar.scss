@@ -53,6 +53,15 @@
     text-align: center;
     text-transform: capitalize;
     font-size: 1.875rem;
+
+    a {
+      color: map-get($map: $colors, $key: main-white);
+
+      &:hover,
+      &:active &:visited {
+        color: map-get($map: $colors, $key: main-white);
+      }
+    }
   }
 
   ul {

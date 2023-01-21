@@ -29,16 +29,6 @@ export const Navbar = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  active: state.sidebarReducer.active,
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    toggleSidebar: () => dispatch(sidebarToggler()),
-  };
-};
-
 function Search() {
   return (
     <div className='search'>
@@ -56,5 +46,15 @@ function Icon(props) {
     </span>
   );
 }
+
+const mapStateToProps = state => ({
+  active: state.sidebarReducer.active,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleSidebar: () => dispatch(sidebarToggler()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

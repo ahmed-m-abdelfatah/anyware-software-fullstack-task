@@ -9,61 +9,55 @@ import {
   faGraduationCap,
   faChartLine,
   faBullhorn,
+  faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link, NavLink } from 'react-router-dom';
+import * as paths from '../../paths.js';
+import { deleteUserTokenFromBrowserStorage } from '../../redux/actionGenerators/authGenerators.js';
 
 export const Sidebar = props => {
+  const handelLogout = e => {
+    e.preventDefault();
+    props.deleteUserTokenFromBrowserStorage();
+  };
+
   return (
     <aside className={props.active === true ? 'sidebar active' : 'sidebar'}>
       <div className='close'>
         <button onClick={() => props.toggleSidebar()}>close x</button>
       </div>
-      <h3>Coligo</h3>
+      <h3>
+        <Link to={paths.HOME_PATH}>Coligo</Link>
+      </h3>
       <ul>
-        <li>
-          <a className='active' href='./#'>
-            <FontAwesomeIcon size='xl' icon={faHouseChimney} />
-            <span>Dashboard</span>
-          </a>
-        </li>
+        <SidebarLink link={paths.HOME_PATH} name={'Dashboard'} icon={faHouseChimney} />
+        <SidebarLink link={paths.SCHEDULE_PATH} name={'Schedule'} icon={faCalendarDays} />
+        <SidebarLink link={paths.COURSES_PATH} name={'Courses'} icon={faBook} />
+        <SidebarLink link={paths.GRADE_BOOK_PATH} name={'Grade book'} icon={faGraduationCap} />
+        <SidebarLink link={paths.PERFORMANCE_PATH} name={'Performance'} icon={faChartLine} />
+        <SidebarLink link={paths.ANNOUNCEMENT_PATH} name={'Announcement'} icon={faBullhorn} />
 
         <li>
-          <a href='./#'>
-            <FontAwesomeIcon size='xl' icon={faCalendarDays} />
-            <span>Schedule</span>
-          </a>
-        </li>
-
-        <li>
-          <a href='./#'>
-            <FontAwesomeIcon size='xl' icon={faBook} />
-            <span>Courses</span>
-          </a>
-        </li>
-
-        <li>
-          <a href='./#'>
-            <FontAwesomeIcon size='xl' icon={faGraduationCap} />
-            <span>Grade book</span>
-          </a>
-        </li>
-
-        <li>
-          <a href='./#'>
-            <FontAwesomeIcon size='xl' icon={faChartLine} />
-            <span>Performance</span>
-          </a>
-        </li>
-
-        <li>
-          <a href='./#'>
-            <FontAwesomeIcon size='xl' icon={faBullhorn} />
-            <span>Announcement</span>
+          <a href='./#' onClick={handelLogout}>
+            <FontAwesomeIcon size='xl' icon={faRightFromBracket} />
+            <span>logout</span>
           </a>
         </li>
       </ul>
     </aside>
   );
 };
+
+function SidebarLink(props) {
+  return (
+    <li>
+      <NavLink to={props.link}>
+        <FontAwesomeIcon size='xl' icon={props.icon} />
+        <span>{props.name}</span>
+      </NavLink>
+    </li>
+  );
+}
 
 const mapStateToProps = state => ({
   active: state.sidebarReducer.active,
@@ -72,6 +66,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     toggleSidebar: () => dispatch(sidebarToggler()),
+    deleteUserTokenFromBrowserStorage: () => dispatch(deleteUserTokenFromBrowserStorage()),
   };
 };
 
