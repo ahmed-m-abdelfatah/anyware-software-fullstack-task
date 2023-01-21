@@ -4,7 +4,7 @@ import * as paths from '../../paths.js';
 
 const NotFound = () => {
   return (
-    <main className='notFound'>
+    <main className='not-found'>
       <p>404 Not Found</p>
       <Link to={paths.HOME_PATH}>Go to home</Link>
     </main>

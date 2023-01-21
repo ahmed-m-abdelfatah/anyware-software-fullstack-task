@@ -9,5 +9,6 @@
   .wrapper {
     background-color: map-get($map: $colors, $key: main-white);
     border-radius: 0.625rem;
+    padding: 1.25rem;
   }
 }

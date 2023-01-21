@@ -39,8 +39,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
-
 function Search() {
   return (
     <div className='search'>
@@ -58,3 +56,5 @@ function Icon(props) {
     </span>
   );
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
