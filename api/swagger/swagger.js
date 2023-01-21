@@ -2,7 +2,7 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import * as swaggerUI from 'swagger-ui-express';
 
 const usedData = {
-  globalDomain: 'https://anyware-coligo-backend.onrender.com',
+  globalDomain: 'https://anyware-software-fullstack-task-api.onrender.com',
   localDomain: `http://localhost:${process.env.PORT}`,
   title: 'Anyware Coligo API',
   channel: process.env.CHANNEL,
@@ -18,10 +18,10 @@ function swaggerDocs(app, apis) {
         version: usedData.version,
       },
       servers: [
-        {
-          // local server
-          url: `${usedData.localDomain}${usedData.channel}`,
-        },
+        // {
+        //   // local server
+        //   url: `${usedData.localDomain}${usedData.channel}`,
+        // },
         {
           // global server
           url: `${usedData.globalDomain}${usedData.channel}`,
